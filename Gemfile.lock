@@ -36,6 +36,10 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     csv (3.3.0)
+    database_cleaner-core (2.0.1)
+    database_cleaner-sequel (2.0.2)
+      database_cleaner-core (~> 2.0.0)
+      sequel
     diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.13.0)
@@ -128,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner-sequel
   factory_bot_rails
   faker
   httparty

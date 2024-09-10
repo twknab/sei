@@ -3,6 +3,7 @@
 require 'sequel'
 
 module Database
+  # TODO: move these values into environment variables so not visible in repository
   def self.config
     {
       adapter: 'postgresql',
@@ -13,8 +14,23 @@ module Database
     }
   end
 
+  # TODO: move these values into environment variables so not visible in repository
+  def self.test_config
+    {
+      adapter: 'postgresql',
+      database: 'college_db_test',
+      username: 'postgres',
+      password: 'postgres',
+      host: 'localhost'
+    }
+  end
+
   def self.connect
     @db = Sequel.connect(config)
+  end
+
+  def self.connect_test
+    @test_db = Sequel.connect(test_config)
   end
 
   def self.migrate
@@ -23,5 +39,9 @@ module Database
 
   def self.db
     @db
+  end
+
+  def self.test_db
+    @test_db
   end
 end

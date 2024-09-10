@@ -2,42 +2,53 @@
 
 // TODO: Add description
 
-## How to Run
+## How to Setup & Run
 
-// TODO: Add instructions on how to run
+> ℹ️ **Info:** You may need to look up the correct installation method if running Windows or another operating system. These instructions are for Mac running on Apple Silicon using homebrew.
 
-### Install Ruby and RVM
+### Step 1: Install Ruby and RVM (Mac)
 
-1. Ruby: Install ruby on your machine (//TODO: Add more details for system)
-2. Install a ruby version manager like `rbenv` or `rvm`
-3. Install the ruby version specified in the `.ruby-version` file (3.2.2)
+This is a ruby project, so you'll need to have ruby installed on your machine with the correct version utilized in the project. Using a version manager is recommended.
 
-### Install PostgreSQL
+1. Ruby: Install ruby on your machine
+   - `brew install ruby`
+2. Install a ruby version manager like `rvm` (or your preferred version manager)
+   - `brew install rvm`
+3. Install the ruby version specified in the `.ruby-version` file (3.2.2):
+   - `rvm install 3.2.2`
+4. Set your system ruby to the version specified in the `.ruby-version` file (3.2.2)
+   - `rvm use 3.2.2`
 
-1. Install PostgreSQL on your machine (//TODO: Add more details for system)
+### Step 2: Install PostgreSQL
+
+We'll be using PostgreSQL to store the scraped college data, and will need to install it on our machine.
+
+1. Install PostgreSQL
+   - `brew install postgresql`
 2. Ensure PostgreSQL is running on your machine
+   - `brew services start postgresql`
 
-### Setup the Database
+### Step 3: Setup the Database
 
-<!-- TODO: Discuss setting up database environmental variables -->
+We need to setup the database and create the `colleges` table, to store the scraped college data.
+
+<!-- TODO: Add instructions on setting up database environmental variables if needed -->
 1. Run `bundle install` to install the gems specified in the `Gemfile`
-2. Run `rake db:create` to create the database
+2. Run `rake db:create` to create the database and test_database (for specs)
 3. Run `rake db:migrate` to run migrations (will create the `colleges` table)
 4. How to drop (if needed): Run `rake db:drop`
 
-### Run the College Crawler script
+### Step 4: Run the College Crawler script 🎉
 
-- Run `rake scrape` to scrape the college data from the College Board website provided in `CollegeCrawler` (`/exec/college_crawler.rb`)
+You may now execute the college crawler script to scrape the College Board website and populate the database with data.
+
+- Run `rake scrape` (or just `rake` since the scrape is the default task) to crawl the College Board website and populate the database with data.
   - This may take awhile to complete and will populate the database with college data.
 
-### Run the tests
+### Step 5: Run the tests (if you wish)
 
-- Run `rake test` to run the tests for the scripts and models.
-<!-- 7. Run `rake db:seed` to seed the database with the college data -->
-<!-- TODO: Do we need to see anything? Will we have a development environment / test database? This isn't a running server -->
-
-// TODO: Need to discuss how to setup ruby version and install ruby on your machine
-// TODO: Need to discuss how to install postgres on your machine
+- Run `rake spec` to run the tests for the script and model.
+  - You can also use the command `rspec .` to run the tests
 
 ## Technologies Used
 
@@ -55,9 +66,15 @@
 
 // TODO: Add features
 
-## Technical Concerns & Improvements
+## Technical Concerns
 
-// TODO: Add technical concerns & improvements
+// TODO: Add technical concerns
+
+## Improvements
+
+- Would be nice to add automated testing suite that runs on CI/CD pipeline
+- Would be nice to add a frontend to the application to allow users to search for colleges by name, city, state, etc.
+- Would be nice to offer a public API to allow users to search for colleges by name, city, state, etc.
 
 ## Thank You Note
 
