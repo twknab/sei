@@ -13,7 +13,7 @@ class CollegeCrawler
   COLLEGE_PAGE_BASE_URL = 'https://bigfuture.collegeboard.org/colleges'
   FILTER_PAGE_URL = 'https://bigfuture.collegeboard.org/college-search/filters'
 
-  def initialize(dry_run: true, batch_size: 50)
+  def initialize(dry_run: false, batch_size: 50)
     @batch_size = batch_size
     @dry_run = dry_run
     @db = Database.connect

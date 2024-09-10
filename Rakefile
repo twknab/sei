@@ -62,8 +62,8 @@ namespace :db do
 end
 
 desc 'Run the college crawler'
-task :scrape, [:execute, :batch_size] do |_t, args|
-  dry_run = args[:execute] != 'true'
+task :scrape, [:dry_run, :batch_size] do |_t, args|
+  dry_run = args[:dry_run] == 'true'
   batch_size = args[:batch_size]&.to_i || nil
 
   CollegeCrawler.new(dry_run:, batch_size:).run
