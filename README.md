@@ -21,7 +21,7 @@ This is a ruby project, so you'll need to have ruby installed on your machine wi
 
 ### Step 2: Install PostgreSQL
 
-We'll be using PostgreSQL to store the scraped college data, and will need to install it on our machine.
+We'll be using PostgreSQL to store the scraped college data, and will need to install it on our machine. If you're having any trouble installing or running postgres through homebrew, you can also download postgres and run the service using [Postgres.app](https://postgresapp.com/downloads.html) for Mac.
 
 1. Install PostgreSQL
    - `brew install postgresql`
@@ -66,15 +66,25 @@ You may now execute the college crawler script to scrape the College Board websi
 
 // TODO: Add features
 
+- Scrapes all colleges from the College Board website and stores them in `colleges` table
+- Progress Bar
+- Throttling
+- Dry Run
+- Debugging
+- **TODO:
+- Error Handling
+- Logging
+
 ## Technical Concerns
 
 // TODO: Add technical concerns
 
 ## Improvements
 
-- Would be nice to add automated testing suite that runs on CI/CD pipeline
-- Would be nice to add a frontend to the application to allow users to search for colleges by name, city, state, etc.
-- Would be nice to offer a public API to allow users to search for colleges by name, city, state, etc.
+- Retry mechanism? (if error, retry after 5 seconds X number of times?)
+- Add automated testing suite to repository that runs on CI/CD pipeline
+- Add a frontend to the application to allow users to search for colleges by name, city, state, etc.
+- Add a public API to allow users to search for colleges by name, city, state, etc.
 
 ## Thank You Note
 

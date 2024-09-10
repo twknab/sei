@@ -25,11 +25,11 @@ require 'database_cleaner-sequel'
 require_relative '../config/db/db_config'
 
 # Establish a connection to the test database when test suite is run
-Database.connect_test
+DB = Database.connect_test
 
 # Run migrations for the test database
 Sequel.extension :migration
-Sequel::Migrator.run(Database.test_db, 'db/migrate')
+Sequel::Migrator.run(DB, 'db/migrate')
 
 # Require all model files
 Dir[File.join(__dir__, '../models/**/*.rb')].each { |file| require file }

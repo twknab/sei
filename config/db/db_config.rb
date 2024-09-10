@@ -26,22 +26,14 @@ module Database
   end
 
   def self.connect
-    @db = Sequel.connect(config)
+    Sequel.connect(config)
   end
 
   def self.connect_test
-    @test_db = Sequel.connect(test_config)
+    Sequel.connect(test_config)
   end
 
   def self.migrate
     Rake::Task['db:migrate'].invoke
-  end
-
-  def self.db
-    @db
-  end
-
-  def self.test_db
-    @test_db
   end
 end

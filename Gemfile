@@ -1,17 +1,27 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.2.2"
+source 'https://rubygems.org'
+
+ruby '3.2.2'
 
 # Web Scraping
 gem 'httparty'
 gem 'nokogiri'
+gem 'ruby-progressbar'
 
 # Database
-gem 'sequel'
 gem 'pg'
+gem 'sequel'
 
 # Testing
-gem 'rspec'
+gem 'database_cleaner-sequel'
 gem 'factory_bot_rails'
 gem 'faker'
-gem 'database_cleaner-sequel'
+gem 'rspec'
+
+# Debugging
+gem 'debug', '>= 1.0.0'
+
+# Linting
+gem 'rubocop'
+gem 'rubocop-rspec'
