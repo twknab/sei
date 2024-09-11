@@ -3,10 +3,10 @@
 require 'sequel'
 
 class College < Sequel::Model
-  plugin :validation_helpers
+  plugin :validation_helpers, :timestamps, :update_on_create
 
   def validate
     super
-    validates_presence [:name, :city, :state]
+    validates_presence %i[name city state]
   end
 end

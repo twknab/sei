@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'httparty'
-require 'nokogiri'
+require 'capybara'
+require 'selenium-webdriver'
 require 'json'
 require 'securerandom'
 require 'ruby-progressbar'
@@ -20,11 +21,10 @@ class CollegeCrawler
   end
 
   def fetch_total_colleges
-    filter_page_response = HTTParty.get(FILTER_PAGE_URL)
-    filter_page = Nokogiri::HTML(filter_page_response.body)
-    total_colleges_element = filter_page.at_css('div[data-testid="cs-show-number-of-results"] span')
+    session = Capybara::Session.new(:selenium_chrome_headless)
+    session.visit(FILTER_PAGE_URL)
+    total_colleges_element = session.find('div[id="cs-show-number-of-results"] span')
 
-    binding.break
     total_colleges_element.text.strip.to_i
   end
 
@@ -39,7 +39,9 @@ class CollegeCrawler
 
     progress_bar = ProgressBar.create(
       total: total_hits,
-      format: '%a |%b>>%i| %p%% %t'
+      format: '%a |%b>>%i| %p%% %t',
+      progress_mark: '█',
+      remainder_mark: '░'
     )
 
     while from < total_hits
@@ -73,19 +75,20 @@ class CollegeCrawler
         vanity_uri = college['vanityUri']
 
         college_page_url = "#{COLLEGE_PAGE_BASE_URL}/#{vanity_uri}"
-
-        sleep(rand(1..5))
         college_board_code = fetch_college_board_code(college_page_url)
 
         if @dry_run
           puts "DRY RUN - Would insert: #{name}, #{city}, #{state}, #{college_board_code}"
         else
-          @db[:colleges].insert(
-            name:,
-            city:,
-            state:,
-            college_board_code:
-          )
+          # TODO: The created_at and updated_at don't seem to be working
+          unless @db[:colleges].where(name:).count.positive?
+            @db[:colleges].insert(
+              name:,
+              city:,
+              state:,
+              college_board_code:
+            )
+          end
         end
 
         progress_bar.increment
@@ -100,12 +103,16 @@ class CollegeCrawler
 
   # Scrape the college board code from the individual college page
   def fetch_college_board_code(college_page_url)
-    response = HTTParty.get(college_page_url)
-    page = Nokogiri::HTML(response.body)
-
-    college_board_code_element = page.at_css('div[data-testid="csp-more-about-college-board-code-valueId"]')
-
-    # TODO: Dig into this a bit more
-    college_board_code_element&.text&.strip || nil
+    session = Capybara::Session.new(:selenium_chrome_headless)
+    session.visit(college_page_url)
+    begin
+      college_board_code_element = session.find(
+        'div[data-testid="csp-more-about-college-board-code-labelId"]',
+        visible: false
+      )
+      college_board_code_element&.text&.strip
+    rescue Capybara::ElementNotFound
+      nil
+    end
   end
 end

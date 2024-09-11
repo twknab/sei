@@ -5,9 +5,10 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # Web Scraping
+gem 'capybara'
 gem 'httparty'
-gem 'nokogiri'
 gem 'ruby-progressbar'
+gem 'selenium-webdriver'
 
 # Database
 gem 'pg'
