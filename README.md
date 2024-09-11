@@ -12,6 +12,10 @@ rake db:migrate # to create the colleges table
 rake # to scrape the colleges
 ```
 
+## 📷 Screenshots
+<!-- TODO: Add screenshot of script running -->
+<!-- TODO: Add screenshot of database snapshot table -->
+
 ## 📋 Project Setup
 
 > ℹ️ **Info:** You may need to look up the correct installation method for a given step if running Windows or another operating system. These instructions are for Mac running on Apple Silicon using homebrew.
@@ -85,8 +89,8 @@ If you wish to dry run the script first:
 
 - Sequel: allows us to interact with the database via an ORM, and gives us the advantages of migrations, validations, and more.
 - HTTParty: allows us to make HTTP requests to the College Board API (used for the POST request to the API).
-- Capybara: Allows us to interact with the college board website and supports JavaScript. //TODO: Clarify
-- Selenium Webdriver: Allows us to interact with the college board website and supports JavaScript. // TODO: Clarify
+- Capybara: Allows us to write UI interactions that we would like to perform (we'll use Selenium Webdriver under the hood for browser interactions).
+- Selenium Webdriver: Allows us to interact with the college board website and supports JavaScript We use this to scrape college data we can't get from our API search POST request.
 - Ruby-ProgressBar: allows us to display a progress bar for the script.
 
 ### Testing
@@ -108,11 +112,13 @@ If you wish to dry run the script first:
 ## 🚂 Features
 
 - Scrapes all colleges from the College Board website and stores them in `colleges` table
+- Fetches total number of colleges from the primary page (script can handle changing source datasets)
 - Idempotent (running the script again won't re-write the same data)
 - Progress Bar: see real time progress of the scrape
 - Throttling: randomly throttles the requests to the College Board website to avoid getting flagged as a bot
-- Retry Mechanism: retries the college code request if it fails
+- Retry Mechanism: retries the college code scrape if it fails
 - Dry Run: see the scrape real time, without writing to the database
+- Optimizations: Configured selenium and capybara to run headless, increase wait and timeout times, and restart browser session every 100 colleges to free up memory.
 - **TODO:**
   - Error Handling
   - Logging
