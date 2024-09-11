@@ -7,7 +7,7 @@ module Database
   def self.config
     {
       adapter: 'postgresql',
-      database: 'college_db',
+      database: 'colleges',
       username: 'postgres',
       password: 'postgres',
       host: 'localhost'
@@ -18,7 +18,7 @@ module Database
   def self.test_config
     {
       adapter: 'postgresql',
-      database: 'college_db_test',
+      database: 'colleges_test',
       username: 'postgres',
       password: 'postgres',
       host: 'localhost'
@@ -26,11 +26,15 @@ module Database
   end
 
   def self.connect
-    Sequel.connect(config)
+    db = Sequel.connect(config)
+    Sequel::Model.db = db
+    db
   end
 
   def self.connect_test
-    Sequel.connect(test_config)
+    db = Sequel.connect(test_config)
+    Sequel::Model.db = db
+    db
   end
 
   def self.migrate

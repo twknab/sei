@@ -3,7 +3,8 @@
 require 'sequel'
 
 class College < Sequel::Model
-  plugin :validation_helpers, :timestamps, :update_on_create
+  plugin :timestamps, update_on_create: true
+  plugin :validation_helpers
 
   def validate
     super

@@ -6,7 +6,6 @@ require 'rspec/core/rake_task'
 require 'debug'
 
 require_relative './config/db/db_config'
-require_relative './exec/college_crawler'
 
 namespace :db do
   desc 'Create the database'
@@ -63,6 +62,8 @@ end
 
 desc 'Run the college crawler'
 task :scrape, [:dry_run, :batch_size] do |_t, args|
+  require_relative './exec/college_crawler'
+
   dry_run = args[:dry_run] == 'true'
   batch_size = args[:batch_size]&.to_i || 50
 

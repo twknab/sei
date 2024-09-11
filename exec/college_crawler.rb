@@ -7,7 +7,10 @@ require 'json'
 require 'securerandom'
 require 'ruby-progressbar'
 
+Database.connect
+
 require_relative '../config/db/db_config'
+require_relative '../models/college'
 
 class CollegeCrawler
   BASE_API_URL = 'https://cs-search-api-prod.collegeplanning-prod.collegeboard.org/colleges'
@@ -17,7 +20,6 @@ class CollegeCrawler
   def initialize(dry_run: false, batch_size: 50)
     @batch_size = batch_size
     @dry_run = dry_run
-    @db = Database.connect
   end
 
   def fetch_total_colleges
@@ -30,12 +32,11 @@ class CollegeCrawler
 
   def run
     total_hits = fetch_total_colleges
+    from = 0
 
+    puts '🧪 Dry run detected, no data will be inserted' if @dry_run
     puts "Total colleges found: #{total_hits}"
     puts 'Processing...'
-
-    # TODO: Should this be starting at 0 or 1 -- not sure if index yet?
-    from = 0
 
     progress_bar = ProgressBar.create(
       total: total_hits,
@@ -80,9 +81,8 @@ class CollegeCrawler
         if @dry_run
           puts "DRY RUN - Would insert: #{name}, #{city}, #{state}, #{college_board_code}"
         else
-          # TODO: The created_at and updated_at don't seem to be working
-          unless @db[:colleges].where(name:).count.positive?
-            @db[:colleges].insert(
+          unless College.where(name:).count.positive?
+            College.create(
               name:,
               city:,
               state:,
@@ -103,16 +103,36 @@ class CollegeCrawler
 
   # Scrape the college board code from the individual college page
   def fetch_college_board_code(college_page_url)
-    session = Capybara::Session.new(:selenium_chrome_headless)
-    session.visit(college_page_url)
+    max_retries = 15
+    retries = 0
+
     begin
-      college_board_code_element = session.find(
-        'div[data-testid="csp-more-about-college-board-code-valueId"]',
-        visible: false
-      )
-      college_board_code_element&.text&.strip
-    rescue Capybara::ElementNotFound
-      nil
+      session = Capybara::Session.new(:selenium_chrome_headless)
+
+      # Set Capybara's default timeout to give more time for loading latency
+      Capybara.default_max_wait_time = 15
+
+      session.visit(college_page_url)
+
+      begin
+        college_board_code_element = session.find(
+          'div[data-testid="csp-more-about-college-board-code-valueId"]',
+          visible: false
+        )
+        college_board_code_element&.text&.strip
+      rescue Capybara::ElementNotFound
+        nil
+      end
+    rescue Net::ReadTimeout, Selenium::WebDriver::Error::TimeoutError => e
+      retries += 1
+      if retries <= max_retries
+        puts "Timeout occurred, retrying... (#{retries}/#{max_retries})"
+        sleep(2**retries)
+        retry
+      else
+        puts "Failed after #{max_retries} attempts: #{e.message}"
+        nil
+      end
     end
   end
 end
