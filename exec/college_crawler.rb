@@ -39,7 +39,7 @@ class CollegeCrawler
 
     progress_bar = ProgressBar.create(
       total: total_hits,
-      format: '%a |%b>>%i| %p%% %t',
+      format: '%a |%b%i| %p%% %t | %c/%C',
       progress_mark: '█',
       remainder_mark: '░'
     )
@@ -97,8 +97,8 @@ class CollegeCrawler
       from += @batch_size
       sleep(rand(1..5))
 
-      puts @dry_run ? '🧪 Dry run completed. No data was inserted.' : '⚡️ Data scraping and insertion completed.'
     end
+    puts @dry_run ? '🧪 Dry run completed. No data was inserted.' : '⚡️ Data scraping and insertion completed.'
   end
 
   # Scrape the college board code from the individual college page
@@ -107,7 +107,7 @@ class CollegeCrawler
     session.visit(college_page_url)
     begin
       college_board_code_element = session.find(
-        'div[data-testid="csp-more-about-college-board-code-labelId"]',
+        'div[data-testid="csp-more-about-college-board-code-valueId"]',
         visible: false
       )
       college_board_code_element&.text&.strip

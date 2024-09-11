@@ -2,6 +2,18 @@
 
 // TODO: Add description
 
+## Super Fast Quick Start Instructions
+
+<!-- TODO: -->
+
+### Setup the DB and run the script
+
+<!-- TODO: -->
+
+### Reset the DB if desired
+
+<!-- TODO: -->
+
 ## How to Setup
 
 > ℹ️ **Info:** You may need to look up the correct installation method if running Windows or another operating system. These instructions are for Mac running on Apple Silicon using homebrew.
