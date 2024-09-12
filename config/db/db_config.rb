@@ -2,8 +2,9 @@
 
 require 'sequel'
 
+# Configuration for the database
 module Database
-  # TODO: move these values into environment variables so not visible in repository
+  # TODO: move these values into environment variables
   def self.config
     {
       adapter: 'postgresql',
@@ -14,7 +15,7 @@ module Database
     }
   end
 
-  # TODO: move these values into environment variables so not visible in repository
+  # TODO: move these values into environment variables
   def self.test_config
     {
       adapter: 'postgresql',

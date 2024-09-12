@@ -17,8 +17,7 @@ rake # scrape the colleges and populate the database ✨
 
 ## 📷 Screenshots
 
-<!-- TODO: Add screenshot of script running -->
-<!-- TODO: Add screenshot of database snapshot table -->
+![Script Running](assets/img/screenshot.png)
 
 ## 📋 Project Setup
 
@@ -77,8 +76,6 @@ We need to setup the database and create the `colleges` table, to store the scra
 
 After setting up the project, may now execute the college crawler script to scrape the College Board website and populate the database with data.
 
-> ℹ️ **Info:** This script supports custom arguments: `batch_size` and `dry_run`.
-
 ```bash
 rake
 ```
@@ -86,17 +83,6 @@ rake
 This will take awhile to complete and will populate the database with college data.
 
 > ℹ️ **Info:** Failed API or Puppeeteer actions will retry 15 times. However, total failures past this point will be logged in `errors.log` and can be manually remediated following script run. Any failures writing to the database however will be immediately logged. No failures will hault the continued script execution.
-
-### Dry Run or Custom Batch Size
-
-If you wish to dry run the script first:
-
-- To run a dry run, pass in true as the first argument: `rake scrape[true]`
-
-  - Dry run mode is false by default, because this script is intended to be executed as default behavior.
-
-- To run a custom batch size, you can pass in your desired value (ex: `100`) like this: `rake scrape[false, 100]`. This would run the script with dry mode off, and a batch size of 100. You may also turn dry mode on via `rake script[true, 100]`
-  - Warning: If you choose a batch size that is too large, you may run into errors due to the College Board API rate limiting, or get your IP address banned. Consider using a VPN or proceeding with caution.
 
 ### 🧪 Run Tests
 
@@ -113,8 +99,9 @@ If you wish to dry run the script first:
 
 - Sequel: allows us to interact with the database via an ORM, and gives us the advantages of migrations, validations, and more.
 - HTTParty: allows us to make HTTP requests to the College Board API (used for the POST request to the API).
+  - We are able to obtain most of the data we need via the API, however some data, such as the `college board code`, is not available via the API and requires web scraping.
 - Puppeteer: allows us to control the browser and interact with the web page, and extract the data we need from the DOM.
-  - In our case, we can get mostly everything *except* the `college board code` from the College Board's API POST request.
+  - In our case, we can get mostly everything *except* the `college board code` from the College Board's API POST request, and we utilize Puppetteer to scrape this remaining data.
 - Ruby-ProgressBar: allows us to display a progress bar for the script with elapsed time and ETA of completion.
 
 ### Testing
@@ -126,7 +113,7 @@ If you wish to dry run the script first:
 ### Database
 
 - PostgreSQL: allows us to store the scraped college data in a database that's scalable and can be indexed and searched.
-  - TODO: Add more detail why we're using PostgreSQL
+  - I chose to go with an SQL based database because the data we needed is highly structured, and also thought Postgres had some advantages over SQL in terms of scalability and performance.
 
 ### Debugging and Code Quality
 
@@ -141,7 +128,6 @@ If you wish to dry run the script first:
 - Progress Bar: see real time progress of the scrape
 - Throttling: randomly throttles the requests to the College Board website to avoid getting flagged as a bot
 - Retry Mechanism: retries the college code scrape if it fails
-- Dry Run: see the scrape real time, without writing to the database
 - Optimizations: Configured selenium and capybara to run headless, increase wait and timeout times, and restart browser session every 100 colleges to free up memory.
 - Error Handling & Logging: API and Puppeteer Errors are handled gracefully to retry, however after a certain number of attempts any failures will be written to `errors.log` where any outliers could be manually remediated. The script will continue processing the next batch following retry attempts and subsequent failure.
 
@@ -149,10 +135,6 @@ If you wish to dry run the script first:
 
 - The `debug` gem is included in this project, and imported in the Rakefile, so is available to use throughout the project, as long as running the script via the Rake command.
 - Add a `binding.break` to the code to add a break point.
-
-## 🤔 Technical Concerns
-
-// TODO: Add technical concerns
 
 ## 🏃‍♂️ Improvements
 
@@ -162,4 +144,4 @@ If you wish to dry run the script first:
 
 ## 🙏 Thank You Note
 
-// TODO: Add thank you note
+Thank you sincerely for the opportunity to complete this for SEI. I really appreicated the uniqueness of this challenge, and had fun building this script.

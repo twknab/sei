@@ -6,8 +6,8 @@ ruby '3.3.5'
 
 # Web Scraping
 gem 'httparty'
-gem 'ruby-progressbar'
 gem 'puppeteer-ruby'
+gem 'ruby-progressbar'
 
 # Database
 gem 'pg'

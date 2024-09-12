@@ -2,6 +2,7 @@
 
 require 'logger'
 
+# Configuration for the logger, routes everything to `errors.log`
 module LoggingConfig
   def self.setup
     log_file = File.open('errors.log', 'w')
