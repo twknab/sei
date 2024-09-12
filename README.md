@@ -127,7 +127,6 @@ This will take awhile to complete and will populate the database with college da
 - Progress Bar: see real time progress of the scrape
 - Throttling: randomly throttles the requests to the College Board website to avoid getting flagged as a bot
 - Retry Mechanism: retries the college code scrape if it fails
-- Optimizations: Configured selenium and capybara to run headless, increase wait and timeout times, and restart browser session every 100 colleges to free up memory.
 - Error Handling & Logging: API and Puppeteer Errors are handled gracefully to retry, however after a certain number of attempts any failures will be written to `errors.log` where any outliers could be manually remediated. The script will continue processing the next batch following retry attempts and subsequent failure.
 
 ## 🐞 Debugging
