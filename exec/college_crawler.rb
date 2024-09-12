@@ -4,12 +4,19 @@ require 'httparty'
 require 'json'
 require 'securerandom'
 require 'ruby-progressbar'
+require 'puppeteer-ruby'
+require 'logger'
 
 Database.connect
 
 require_relative '../config/db/db_config'
-require_relative '../config/capybara/capybara_config'
 require_relative '../models/college'
+
+# Redirect STDERR to a log file
+log_file = File.open('errors.log', 'w')
+log_file.sync = true
+$stderr.reopen(log_file)
+logger = Logger.new(log_file)
 
 class CollegeCrawler
   BASE_API_URL = 'https://cs-search-api-prod.collegeplanning-prod.collegeboard.org/colleges'
@@ -25,15 +32,10 @@ class CollegeCrawler
     total_hits = fetch_total_colleges
     from = 0
 
-    puts '🧪 Dry run detected, no data will be inserted' if @dry_run
-    puts "Total colleges found: #{total_hits}"
-    puts 'Processing...'
-
+    print_script_overview
     progress_bar = create_progress_bar(total_hits)
 
     while from < total_hits
-      Capybara.reset_sessions! if (from % 100).zero?
-
       colleges = fetch_colleges(from)
       process_colleges(colleges, progress_bar)
 
@@ -46,12 +48,41 @@ class CollegeCrawler
 
   private
 
-  def fetch_total_colleges
-    session = Capybara::Session.new(:selenium_chrome_headless)
-    session.visit(FILTER_PAGE_URL)
-    total_colleges_element = session.find('div[id="cs-show-number-of-results"] span')
+  def print_script_overview
+    puts "🧪 Dry run detected: #{@dry_run}"
+    puts "🔍 Batch size: #{@batch_size}"
+    puts "🥷 Colleges at #{FILTER_PAGE_URL} will be scraped..."
+    puts "🔍 Total colleges found: #{fetch_total_colleges}"
+    puts '🌀 Processing...'
+  end
 
-    total_colleges_element.text.strip.to_i
+  def fetch_total_colleges
+    max_retries = 15
+    retries = 0
+
+    begin
+      Puppeteer.launch(headless: true, timeout: 60_000) do |browser|
+        page = browser.new_page
+        page.goto(FILTER_PAGE_URL)
+
+        total_colleges_element = page.wait_for_selector(
+          'div[id="cs-show-number-of-results"] span',
+          timeout: 60_000
+        )
+        total_colleges_element.evaluate(
+          'element => element.textContent'
+        ).strip.to_i
+      end
+    rescue Puppeteer::Connection::ProtocolError, Puppeteer::TimeoutError => e
+      retries += 1
+      if retries <= max_retries
+        sleep(2**retries)
+        retry
+      else
+        logger.error("F, Failed to fetch total colleges count after #{max_retries} attempts.")
+        return 0
+      end
+    end
   end
 
   def create_progress_bar(total_hits)
@@ -64,25 +95,40 @@ class CollegeCrawler
   end
 
   def fetch_colleges(from)
-    response = HTTParty.post(
-      BASE_API_URL,
-      headers: { 'Content-Type' => 'application/json' },
-      body: {
-        eventType: 'search',
-        eventData: {
-          config: {
-            size: @batch_size,
-            from:,
-            highlight: 'name'
-          },
-          criteria: {
-            rmsInputField: '',
-            rmsInputValue: ''
+    max_retries = 15
+    retries = 0
+
+    begin
+      response = HTTParty.post(
+        BASE_API_URL,
+        headers: { 'Content-Type' => 'application/json' },
+        body: {
+          eventType: 'search',
+          eventData: {
+            config: {
+              size: @batch_size,
+              from: from,
+              highlight: 'name'
+            },
+            criteria: {
+              rmsInputField: '',
+              rmsInputValue: ''
+            }
           }
-        }
-      }.to_json
-    )
-    JSON.parse(response.body)['data']
+        }.to_json
+      )
+      return JSON.parse(response.body)['data']
+    rescue HTTParty::Error, JSON::ParserError => e
+      retries += 1
+      if retries <= max_retries
+        sleep(2**retries)
+        retry
+      else
+        logger.error("F, Failed to fetch additional batch size of #{@batch_size} "\
+          "from index #{from} after #{max_retries} attempts.")
+        return []
+      end
+    end
   end
 
   def process_colleges(colleges, progress_bar)
@@ -102,18 +148,23 @@ class CollegeCrawler
       end
 
       progress_bar.increment
+      sleep(rand(1..5))
     end
   end
 
   def create_college!(name, city, state, college_board_code)
     return if College.where(name:).count.positive?
 
-    College.create(
-      name:,
-      city:,
-      state:,
-      college_board_code:
-    )
+    begin
+      College.create(
+        name:,
+        city:,
+        state:,
+        college_board_code:
+      )
+    rescue StandardError => e
+      logger.error("F, Failed to create college #{name}, #{city}, #{state}, #{college_board_code}. Error: #{e.message}")
+    end
   end
 
   def fetch_college_board_code(college_page_url)
@@ -121,26 +172,20 @@ class CollegeCrawler
     retries = 0
 
     begin
-      session = Capybara::Session.new(:selenium_chrome_headless)
-      session.visit(college_page_url)
-      college_board_code_element = session.find(
-        'div[data-testid="csp-more-about-college-board-code-valueId"]',
-        visible: false
-      )
-      college_board_code_element&.text&.strip
-    rescue Capybara::ElementNotFound
-      nil
-    rescue Selenium::WebDriver::Error::WebDriverError,
-           Net::ReadTimeout,
-           Selenium::WebDriver::Error::TimeoutError => e
+      Puppeteer.launch(headless: true) do |browser|
+        page = browser.new_page
+        page.goto(college_page_url)
+        college_board_code_element = page.wait_for_selector('div[data-testid="csp-more-about-college-board-code-valueId"]', visible: false, timeout: 60_000)
+        college_board_code_element.evaluate('element => element.textContent').strip
+      end
+    rescue Puppeteer::Connection::ProtocolError, Puppeteer::TimeoutError => e
       retries += 1
       if retries <= max_retries
-        puts "Timeout or WebDriver error occurred, retrying... (#{retries}/#{max_retries})"
         sleep(2**retries)
         retry
       else
-        puts "Failed after #{max_retries} attempts: #{e.message}"
-        nil
+        logger.error("F, Failed to fetch college board code for #{college_page_url}")
+        return nil
       end
     end
   end

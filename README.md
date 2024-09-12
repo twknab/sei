@@ -4,15 +4,19 @@ This project is a college crawler that scrapes the [College Board website](https
 
 ## 🚀 Quick Start
 
-If you already have the correct ruby version installed, and Postgres running, you can run the script quickly with the following commands:
+If you already have the correct ruby version installed, and Postgres installed and the service running, you can run the script quickly with the following commands:
 
 ```bash
-rake db:create # to create the database
-rake db:migrate # to create the colleges table
-rake # to scrape the colleges
+bundle install # install the gems
+rake db:create # create the database
+rake db:migrate # create the colleges table
+rake # scrape the colleges and populate the database ✨
 ```
 
+> ℹ️ **Info:** If you run into any issues with the script not running, make sure your postgres service is running. You can start it via homebrew with `brew services start postgresql`. Additionally, any scraping failures will be logged in `errors.log` and can be manually remediated following script run.
+
 ## 📷 Screenshots
+
 <!-- TODO: Add screenshot of script running -->
 <!-- TODO: Add screenshot of database snapshot table -->
 
@@ -27,11 +31,19 @@ This is a ruby project, so you'll need to have ruby installed on your machine wi
 1. Ruby: Install ruby on your machine
    - `brew install ruby`
 2. Install a ruby version manager like `rvm` (or your preferred version manager)
-   - `brew install rvm`
-3. Install the ruby version specified in the `.ruby-version` file (3.2.2):
-   - `rvm install 3.2.2`
-4. Set your system ruby to the version specified in the `.ruby-version` file (3.2.2)
-   - `rvm use 3.2.2`
+   - visit [rvm.io](https://rvm.io/rvm/install) for installation instructions
+   - `\curl -sSL https://get.rvm.io | bash -s stable`
+3. Install the ruby version specified in the `.ruby-version` file (3.3.5):
+   - `rvm install 3.3.5`
+   - Note: if you're on applice silion and receive an error installing ruby 3.3.5, with a message like "Error running '\_\_rvm_make -j8'", you can install openssl and try again, passing the openssl directory to the installation command:
+
+   ```bash
+   brew install openssl
+   rvm install 3.3.5 --with-openssl-dir=/home/$(whoami)/.rvm/usr
+   ```
+
+4. Set your system ruby to the version specified in the `.ruby-version` file (3.3.5)
+   - `rvm use 3.3.5`
 
 ### Step 2: Install PostgreSQL
 
@@ -40,13 +52,22 @@ We'll be using PostgreSQL to store the scraped college data, and will need to in
 1. Install PostgreSQL
    - `brew install postgresql`
 2. Ensure PostgreSQL is running on your machine
-   - `brew services start postgresql`
+   - `brew services start postgresql` or `brew services start postgresql@14`
 
-### Step 3: Setup the Database
+### Step 3: Install dependencies
+
+```bash
+bundle install
+```
+
+Note: if you have any errors when installing `pg` gem, try installing the correct version of `libpq` via: `brew install libpq`
+
+### Step 4: Setup the Database
 
 We need to setup the database and create the `colleges` table, to store the scraped college data.
 
 <!-- TODO: Add instructions on setting up database environmental variables if needed -->
+
 1. Run `bundle install` to install the gems specified in the `Gemfile`
 2. Run `rake db:create` to create the database and test_database (for specs)
 3. Run `rake db:migrate` to run migrations (will create the `colleges` table)
@@ -64,11 +85,14 @@ rake
 
 This will take awhile to complete and will populate the database with college data.
 
+> ℹ️ **Info:** Failed API or Puppeeteer actions will retry 15 times. However, total failures past this point will be logged in `errors.log` and can be manually remediated following script run. Any failures writing to the database however will be immediately logged. No failures will hault the continued script execution.
+
 ### Dry Run or Custom Batch Size
 
 If you wish to dry run the script first:
 
 - To run a dry run, pass in true as the first argument: `rake scrape[true]`
+
   - Dry run mode is false by default, because this script is intended to be executed as default behavior.
 
 - To run a custom batch size, you can pass in your desired value (ex: `100`) like this: `rake scrape[false, 100]`. This would run the script with dry mode off, and a batch size of 100. You may also turn dry mode on via `rake script[true, 100]`
@@ -89,9 +113,9 @@ If you wish to dry run the script first:
 
 - Sequel: allows us to interact with the database via an ORM, and gives us the advantages of migrations, validations, and more.
 - HTTParty: allows us to make HTTP requests to the College Board API (used for the POST request to the API).
-- Capybara: Allows us to write UI interactions that we would like to perform (we'll use Selenium Webdriver under the hood for browser interactions).
-- Selenium Webdriver: Allows us to interact with the college board website and supports JavaScript We use this to scrape college data we can't get from our API search POST request.
-- Ruby-ProgressBar: allows us to display a progress bar for the script.
+- Puppeteer: allows us to control the browser and interact with the web page, and extract the data we need from the DOM.
+  - In our case, we can get mostly everything *except* the `college board code` from the College Board's API POST request.
+- Ruby-ProgressBar: allows us to display a progress bar for the script with elapsed time and ETA of completion.
 
 ### Testing
 
@@ -103,7 +127,7 @@ If you wish to dry run the script first:
 
 - PostgreSQL: allows us to store the scraped college data in a database that's scalable and can be indexed and searched.
   - TODO: Add more detail why we're using PostgreSQL
-  
+
 ### Debugging and Code Quality
 
 - Debug: allows us to add a `binding.break` break point to the code wherever needed.
@@ -119,9 +143,7 @@ If you wish to dry run the script first:
 - Retry Mechanism: retries the college code scrape if it fails
 - Dry Run: see the scrape real time, without writing to the database
 - Optimizations: Configured selenium and capybara to run headless, increase wait and timeout times, and restart browser session every 100 colleges to free up memory.
-- **TODO:**
-  - Error Handling
-  - Logging
+- Error Handling & Logging: API and Puppeteer Errors are handled gracefully to retry, however after a certain number of attempts any failures will be written to `errors.log` where any outliers could be manually remediated. The script will continue processing the next batch following retry attempts and subsequent failure.
 
 ## 🐞 Debugging
 

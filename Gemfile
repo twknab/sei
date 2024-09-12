@@ -2,13 +2,12 @@
 
 source 'https://rubygems.org'
 
-ruby '3.2.2'
+ruby '3.3.5'
 
 # Web Scraping
-gem 'capybara'
 gem 'httparty'
 gem 'ruby-progressbar'
-gem 'selenium-webdriver'
+gem 'puppeteer-ruby'
 
 # Database
 gem 'pg'
