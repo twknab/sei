@@ -1,0 +1,356 @@
+W, [2024-09-11T20:25:05.005027 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:25:05.015141 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:25:33.309153 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:25:33.319497 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:25:47.294501 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:25:47.305318 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:26:01.779439 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:26:01.790597 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:26:19.704210 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:26:19.714526 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:26:20.279388 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:19.375644 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:19.386262 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:34.546799 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:34.556982 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:42.731719 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:42.742488 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:55.798476 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:27:55.808702 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:28:35.402050 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:28:35.413607 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:28:53.101894 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:28:53.112030 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:29:05.199595 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:29:05.210488 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:29:30.824516 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:29:30.834563 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:30:29.094152 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:30:29.103850 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:30:45.849542 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:30:45.859785 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:31:10.387357 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:31:10.397184 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:31:20.250512 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:31:20.260379 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:12.315640 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:12.326352 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:27.182270 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:27.192736 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:40.695043 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:32:40.705336 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:33:07.328308 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:33:07.339340 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:33:24.905100 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:33:24.915574 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:34:04.844311 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:34:04.854567 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:34:15.059348 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:34:15.069782 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:35:19.083926 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:35:19.093399 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:35:27.105812 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:35:27.116216 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:35:28.248882 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:36:08.297880 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:36:08.307825 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:36:31.341297 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:36:31.351744 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:24.765949 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:24.776079 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:33.146911 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:33.156802 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:54.152138 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:37:54.162185 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:02.270993 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:02.281265 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:42.266906 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:42.278115 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:58.834018 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:38:58.846899 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:10.319076 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:10.329350 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:27.363999 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:27.373783 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:53.872995 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:40:53.883201 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:41:33.828008 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:41:33.838752 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:41:47.807795 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:41:47.818747 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:42:09.161336 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:42:09.172257 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:42:26.412845 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:42:26.423109 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:43:45.424766 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:43:45.435658 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:02.113911 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:02.123989 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:10.324647 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:10.334786 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:25.944718 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:45:25.955039 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:46:35.518774 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:46:35.529186 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:46:46.418780 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:46:46.430791 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:47:09.760914 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:47:09.771021 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:48:05.475425 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:48:05.485684 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:48:54.004245 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:48:54.014533 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:49:37.080088 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:49:37.090967 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:50:29.111199 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:50:29.121445 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:50:58.674781 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:50:58.684803 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:01.972540 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:01.983004 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:08.537106 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:08.550038 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:21.216576 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:21.227050 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:30.374245 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:30.384835 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:51.769773 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:52:51.778663 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:53:07.674071 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:53:07.684492 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:53:17.037862 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:53:17.048035 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:55:40.299242 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:55:40.308468 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:56:18.841468 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:56:18.851607 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:56:37.062092 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:56:37.074612 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:57:31.171116 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T20:57:31.181003 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:00:38.077429 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:00:38.087594 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:01:28.352095 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:01:28.362085 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:01:39.002408 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:01:39.012578 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:14.886161 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:14.896779 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:29.369914 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:29.380293 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:55.458677 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:03:55.467893 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:04:37.080422 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:04:37.090900 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:05:17.691992 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:05:17.702148 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:06:02.840690 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:06:02.850327 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:06:56.818481 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:06:56.829112 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:11:47.124508 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:11:47.140603 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:12:20.274536 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:12:20.284499 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:12:46.200628 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:12:46.211014 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:13:31.978610 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:13:31.989249 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:18:07.661180 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:18:07.671158 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:18:28.698027 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:18:28.709086 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:19:18.614019 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:19:18.623999 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:20:52.595369 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:20:52.605492 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:22:31.177023 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:22:31.187315 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:23:39.222054 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:23:39.232219 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:25:15.244848 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:25:15.255843 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:30:21.794953 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:30:21.805067 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:31:19.414054 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:31:19.424466 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:32:43.999874 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
+W, [2024-09-11T21:32:44.010590 #12735]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
+
