@@ -125,12 +125,13 @@ class CollegeCrawler
       JSON.parse(response.body)
     rescue HTTParty::Error, JSON::ParserError => e
       retries += 1
+
       if retries <= max_retries
         sleep(2**retries)
         retry
       else
-        @logger.error('F, Failed to fetch additional batch size of '\
-          "#{@batch_size} from index #{from} after #{max_retries} attempts. "\
+        @logger.error("F, Failed to fetch batch size of #{@batch_size} "\
+          "from index #{from} after #{max_retries} attempts. "\
           "Error: #{e.message}")
         []
       end
