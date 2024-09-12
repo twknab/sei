@@ -67,10 +67,9 @@ We need to setup the database and create the `colleges` table, to store the scra
 
 <!-- TODO: Add instructions on setting up database environmental variables if needed -->
 
-1. Run `bundle install` to install the gems specified in the `Gemfile`
-2. Run `rake db:create` to create the database and test_database (for specs)
-3. Run `rake db:migrate` to run migrations (will create the `colleges` table)
-4. How to drop (if needed): Run `rake db:drop`
+1. Run `rake db:create` to create the database and test_database (for specs)
+2. Run `rake db:migrate` to run migrations (will create the `colleges` table)
+3. How to drop (if needed): Run `rake db:drop`
 
 ## 🕷️ Run the College Crawler
 
