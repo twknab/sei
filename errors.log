@@ -1,4 +1,0 @@
-W, [2024-09-12T01:39:04.518452 #1694]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
-
-W, [2024-09-12T01:39:04.528509 #1694]  WARN -- : Protocol error (Runtime.runIfWaitingForDebugger): Target Closed. (Puppeteer::Connection::ProtocolError)
-
