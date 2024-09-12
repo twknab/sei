@@ -5,19 +5,36 @@ require 'json'
 require 'securerandom'
 require 'ruby-progressbar'
 require 'puppeteer-ruby'
-require 'logger'
 
 Database.connect
 
 require_relative '../config/db/db_config'
+require_relative '../config/logging_config'
 require_relative '../models/college'
 
-# Redirect STDERR to a log file
-log_file = File.open('errors.log', 'w')
-log_file.sync = true
-$stderr.reopen(log_file)
-logger = Logger.new(log_file)
-
+# CollegeCrawler is responsible for scraping college data from the College Board API
+# and processing it for storage in the database. It does the following tasks:
+#
+# - Fetches initial and subsequent batches of college data from the API.
+# - Displays progress and ETA information to the user.
+# - Processes each college's data, including fetching additional details from the college's webpage.
+# - Inserts the processed data into the database.
+#
+# Usage:
+#   CollegeCrawler.new.run
+#
+# See `errors.log` for any failures.
+#
+# Optional Parameters:
+#   dry_run (Boolean): If true, the crawler will not insert data into the database.
+#   batch_size (Integer): The number of colleges to fetch in each batch.
+#
+# Dependencies:
+#   - HTTParty: For making HTTP requests to the College Board API.
+#   - Puppeteer: For scraping additional details from college webpages.
+#   - Sequel: For interacting with the database.
+#   - Logger: For logging and failures.
+#
 class CollegeCrawler
   BASE_API_URL = 'https://cs-search-api-prod.collegeplanning-prod.collegeboard.org/colleges'
   COLLEGE_PAGE_BASE_URL = 'https://bigfuture.collegeboard.org/colleges'
@@ -26,66 +43,44 @@ class CollegeCrawler
   def initialize(dry_run: false, batch_size: 50)
     @batch_size = batch_size
     @dry_run = dry_run
+    @logger = LoggingConfig.setup
   end
 
   def run
-    total_hits = fetch_total_colleges
-    from = 0
+    # Make initial request to API to get total hits and initial colleges
+    total_hits, initial_colleges = fetch_initial_colleges
 
-    print_script_overview
-    progress_bar = create_progress_bar(total_hits)
+    display_script_info(total_hits)
+    progress_bar = display_progress_bar(total_hits)
 
-    while from < total_hits
-      colleges = fetch_colleges(from)
-      process_colleges(colleges, progress_bar)
-
-      from += @batch_size
-      sleep(rand(1..5))
-    end
+    # Process initial batch of colleges and then subsequent batches
+    process_colleges(initial_colleges, progress_bar)
+    fetch_and_process_remaining_colleges(total_hits, progress_bar)
 
     puts @dry_run ? '🧪 Dry run completed. No data was inserted.' : '⚡️ Data scraping and insertion completed.'
   end
 
   private
 
-  def print_script_overview
+  def fetch_initial_colleges
+    from = 0
+    response = fetch_college_batch(from)
+
+    total_hits = response['totalHits']
+    initial_colleges = response['data']
+
+    [total_hits, initial_colleges]
+  end
+
+  def display_script_info(total_hits)
     puts "🧪 Dry run detected: #{@dry_run}"
     puts "🔍 Batch size: #{@batch_size}"
     puts "🥷 Colleges at #{FILTER_PAGE_URL} will be scraped..."
-    puts "🔍 Total colleges found: #{fetch_total_colleges}"
+    puts "🔍 Total colleges found: #{total_hits}"
     puts '🌀 Processing...'
   end
 
-  def fetch_total_colleges
-    max_retries = 15
-    retries = 0
-
-    begin
-      Puppeteer.launch(headless: true, timeout: 60_000) do |browser|
-        page = browser.new_page
-        page.goto(FILTER_PAGE_URL)
-
-        total_colleges_element = page.wait_for_selector(
-          'div[id="cs-show-number-of-results"] span',
-          timeout: 60_000
-        )
-        total_colleges_element.evaluate(
-          'element => element.textContent'
-        ).strip.to_i
-      end
-    rescue Puppeteer::Connection::ProtocolError, Puppeteer::TimeoutError => e
-      retries += 1
-      if retries <= max_retries
-        sleep(2**retries)
-        retry
-      else
-        logger.error("F, Failed to fetch total colleges count after #{max_retries} attempts.")
-        return 0
-      end
-    end
-  end
-
-  def create_progress_bar(total_hits)
+  def display_progress_bar(total_hits)
     ProgressBar.create(
       total: total_hits,
       format: '%a |%b%i| %p%% %t | %c/%C | %e',
@@ -94,7 +89,20 @@ class CollegeCrawler
     )
   end
 
-  def fetch_colleges(from)
+  def fetch_and_process_remaining_colleges(total_hits, progress_bar)
+    from = @batch_size
+    while from < total_hits
+      colleges = fetch_college_batch(from)['data']
+      process_colleges(colleges, progress_bar)
+
+      from += @batch_size
+
+      # Throttle the requests to avoid being rate-limited
+      sleep(rand(1..5))
+    end
+  end
+
+  def fetch_college_batch(from)
     max_retries = 15
     retries = 0
 
@@ -107,7 +115,7 @@ class CollegeCrawler
           eventData: {
             config: {
               size: @batch_size,
-              from: from,
+              from:,
               highlight: 'name'
             },
             criteria: {
@@ -117,16 +125,16 @@ class CollegeCrawler
           }
         }.to_json
       )
-      return JSON.parse(response.body)['data']
+      JSON.parse(response.body)
     rescue HTTParty::Error, JSON::ParserError => e
       retries += 1
       if retries <= max_retries
         sleep(2**retries)
         retry
       else
-        logger.error("F, Failed to fetch additional batch size of #{@batch_size} "\
-          "from index #{from} after #{max_retries} attempts.")
-        return []
+        @logger.error('F, Failed to fetch additional batch size of '\
+          "#{@batch_size} from index #{from} after #{max_retries} attempts.")
+        []
       end
     end
   end
@@ -142,7 +150,8 @@ class CollegeCrawler
       college_board_code = fetch_college_board_code(college_page_url)
 
       if @dry_run
-        puts "DRY RUN - Would insert: #{name}, #{city}, #{state}, #{college_board_code}"
+        puts "DRY RUN - Would insert: #{name}, #{city}, #{state}, "\
+          "#{college_board_code}"
       else
         create_college!(name, city, state, college_board_code)
       end
@@ -163,7 +172,8 @@ class CollegeCrawler
         college_board_code:
       )
     rescue StandardError => e
-      logger.error("F, Failed to create college #{name}, #{city}, #{state}, #{college_board_code}. Error: #{e.message}")
+      @logger.error("F, Failed to create college #{name}, #{city}, #{state}, "\
+        "#{college_board_code}. Error: #{e.message}")
     end
   end
 
@@ -172,11 +182,17 @@ class CollegeCrawler
     retries = 0
 
     begin
-      Puppeteer.launch(headless: true) do |browser|
+      Puppeteer.launch(headless: true, timeout: 60_000) do |browser|
         page = browser.new_page
-        page.goto(college_page_url)
-        college_board_code_element = page.wait_for_selector('div[data-testid="csp-more-about-college-board-code-valueId"]', visible: false, timeout: 60_000)
-        college_board_code_element.evaluate('element => element.textContent').strip
+        page.goto(college_page_url, timeout: 60_000)
+        college_board_code_element = page.wait_for_selector(
+          'div[data-testid="csp-more-about-college-board-code-valueId"]',
+          visible: false,
+          timeout: 60_000
+        )
+        college_board_code_element.evaluate(
+          'element => element.textContent'
+        ).strip
       end
     rescue Puppeteer::Connection::ProtocolError, Puppeteer::TimeoutError => e
       retries += 1
@@ -184,8 +200,9 @@ class CollegeCrawler
         sleep(2**retries)
         retry
       else
-        logger.error("F, Failed to fetch college board code for #{college_page_url}")
-        return nil
+        @logger.error('F, Failed to fetch college board code for '\
+          "#{college_page_url}")
+        nil
       end
     end
   end
