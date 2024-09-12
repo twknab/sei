@@ -11,6 +11,9 @@ Layout/LineLength:
   IgnoreComments: true
   Max: 80
 
+Metrics/ClassLength:
+  Max: 300
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'

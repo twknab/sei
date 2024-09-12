@@ -4,14 +4,14 @@ require 'rake'
 require 'sequel'
 require 'rspec/core/rake_task'
 require 'debug'
-
 require_relative './config/db/db_config'
 
-namespace :db do
+namespace :db do # rubocop:disable Metrics/BlockLength
   desc 'Create the database'
   task :create do
     [Database.config, Database.test_config].each do |db_config|
       success = system("createdb #{db_config[:database]} -U #{db_config[:username]} -h #{db_config[:host]}")
+
       puts "Database #{db_config[:database]} created successfully" if success
     end
 
@@ -61,13 +61,10 @@ namespace :db do
 end
 
 desc 'Run the college crawler'
-task :scrape, [:dry_run, :batch_size] do |_t, args|
+task :scrape do
   require_relative './exec/college_crawler'
 
-  dry_run = args[:dry_run] == 'true'
-  batch_size = args[:batch_size]&.to_i || 50
-
-  CollegeCrawler.new(dry_run:, batch_size:).run
+  CollegeCrawler.new.run
 end
 
 desc 'Run RSpec tests'
