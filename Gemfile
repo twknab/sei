@@ -23,5 +23,5 @@ gem 'rspec'
 gem 'debug', '>= 1.0.0'
 
 # Linting
-gem 'rubocop'
-gem 'rubocop-rspec'
+# gem 'rubocop'
+# gem 'rubocop-rspec'
