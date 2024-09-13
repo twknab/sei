@@ -79,7 +79,11 @@ We need to setup the database and create the `colleges` table, to store the scra
 After setting up the project, may now execute the college crawler script to scrape the College Board website and populate the database with data.
 
 ```bash
+# runs the college scrape task ✨
 rake
+
+# runs the task and prevents system sleep 💊
+caffeinate -i rake
 ```
 
 This will take awhile to complete and will populate the database with college data.
