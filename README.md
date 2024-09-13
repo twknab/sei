@@ -139,6 +139,7 @@ This will take awhile to complete and will populate the database with college da
 ## 🚂 Features
 
 - Scrapes all colleges from the College Board website and stores them in `colleges` table
+  - Easy to use `Rakefile` to run database setup and script execution conveniently
 - Fetches total number of colleges from the primary page (script can handle changing source datasets)
 - Idempotent (running the script again won't re-write the same data)
 - Progress Bar: see real time progress of the scrape
@@ -153,6 +154,8 @@ This will take awhile to complete and will populate the database with college da
 
 ## 🏃‍♂️ Improvements
 
+- Create robust spec for this script
+- Add a new table for "crawler_state", which could store total # of colleges from last fetch, or any other "last run" details that can make our "resume" method more robust
 - Add automated testing suite to repository that runs on CI/CD pipeline
 - Add a frontend to the application to allow users to search for colleges by name, city, state, etc.
 - Add a public API to allow users to search for colleges by name, city, state, etc.
