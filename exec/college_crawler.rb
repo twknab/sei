@@ -71,7 +71,6 @@ class CollegeCrawler
   end
 
   def subsequent_index
-    # Resume mode picks up from the last existing index
     last_index = [College.order(:id).count - 1, 0].max
     @resume_mode ? last_index + @batch_size : @batch_size
   end
