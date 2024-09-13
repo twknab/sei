@@ -82,7 +82,8 @@ After setting up the project, may now execute the college crawler script to scra
 # runs the college scrape task ✨
 rake
 
-# runs the task and prevents system sleep 💊
+# Note: this script can take hours to run. You may wish to:
+# Runs the task and prevent system sleep 💊
 caffeinate -i rake
 ```
 
