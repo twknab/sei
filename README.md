@@ -148,6 +148,7 @@ This will take awhile to complete and will populate the database with college da
 - Create robust spec for this script
 - Add a "resume mode" and a new table for "crawler_state", which could store total # of colleges from last fetch, or any other "last run" details.
   - If total number of colleges has changed, can require a fresh scrape.
+  - *I have a branch with this feature as a WIP*
 - Add automated testing suite to repository that runs on CI/CD pipeline
 - Add a frontend to the application to allow users to search for colleges by name, city, state, etc.
 - Add a public API to allow users to search for colleges by name, city, state, etc.
