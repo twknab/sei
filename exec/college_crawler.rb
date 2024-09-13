@@ -90,6 +90,7 @@ class CollegeCrawler
     puts "✨ Let's steal some data! 💸"
     puts "🥷 Colleges at #{FILTER_PAGE_URL} will be scraped..."
     puts "🔍 Total colleges found: #{total_hits}"
+    puts "🐢 Resuming from #{initial_index + 1}/#{total_hits}..." if @resume_mode
     puts '🌀 Processing...'
   end
 
