@@ -12,8 +12,12 @@ rake db:create # create the database
 rake db:migrate # create the colleges table
 rake # scrape the colleges and populate the database ✨
 
+rake resume # resume a recent script run 🐢
+# Note: we have no guarantee that the source data set has not changed since the last run.
+
 # This script run can take many hours. If you're on a Mac, you may need to run the following command to prevent the computer from sleeping:
 caffeinate -i rake
+caffeinate -i rake resume # if resuming a previous run
 ```
 
 > ℹ️ **Info:** If you run into any issues with the script not running, make sure your postgres service is running. You can start it via homebrew with `brew services start postgresql`. Additionally, any scraping failures will be logged in `errors.log` and can be manually remediated following script run.
@@ -82,9 +86,14 @@ After setting up the project, may now execute the college crawler script to scra
 # runs the college scrape task ✨
 rake
 
+# resume a previous run 🐢
+rake resume
+# Note: we have no guarantee that the source data set has not changed since the last run.
+
 # Note: this script can take hours to run. You may wish to:
 # Runs the task and prevent system sleep 💊
 caffeinate -i rake
+caffeinate -i rake resume # if resuming
 ```
 
 This will take awhile to complete and will populate the database with college data.
