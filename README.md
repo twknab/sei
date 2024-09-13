@@ -11,6 +11,9 @@ bundle install # install the gems
 rake db:create # create the database
 rake db:migrate # create the colleges table
 rake # scrape the colleges and populate the database ✨
+
+# This script run can take many hours. If you're on a Mac, you may need to run the following command to prevent the computer from sleeping:
+caffeinate -i rake
 ```
 
 > ℹ️ **Info:** If you run into any issues with the script not running, make sure your postgres service is running. You can start it via homebrew with `brew services start postgresql`. Additionally, any scraping failures will be logged in `errors.log` and can be manually remediated following script run.
