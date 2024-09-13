@@ -178,7 +178,7 @@ class CollegeCrawler
     begin
       scrape_college_board_code(college_page_url)
     rescue Puppeteer::Connection::ProtocolError, Puppeteer::TimeoutError,
-           Puppeteer::LifecycleWatcher::TerminatedError => e
+           Puppeteer::LifecycleWatcher::TerminatedError, Timeout::Error => e
       retries += 1
       if retries <= max_retries
         sleep(2**retries)
