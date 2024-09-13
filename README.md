@@ -12,7 +12,7 @@ rake db:create # create the database
 rake db:migrate # create the colleges table
 rake # scrape the colleges and populate the database ✨
 
-rake resume # resume 🐢 a recent script run
+rake resume # resume a recent script run 🐢
 # Note: we have no guarantee that the source data set has not changed since the last run.
 
 # This script run can take many hours. If you're on a Mac, you may need to run the following command to prevent the computer from sleeping:
