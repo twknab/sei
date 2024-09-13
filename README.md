@@ -86,14 +86,14 @@ After setting up the project, may now execute the college crawler script to scra
 # runs the college scrape task ✨
 rake
 
-# If you want to resume a previous run of the script, you can run the following command:
+# resume a previous run 🐢
 rake resume
 # Note: we have no guarantee that the source data set has not changed since the last run.
 
 # Note: this script can take hours to run. You may wish to:
 # Runs the task and prevent system sleep 💊
 caffeinate -i rake
-caffeinate -i rake resume # if resuming a previous run
+caffeinate -i rake resume # if resuming
 ```
 
 This will take awhile to complete and will populate the database with college data.
