@@ -23,9 +23,6 @@ require_relative '../models/college'
 #   the college's webpage.
 # - Inserts the processed data into the database.
 #
-# Optional Parameters:
-#   - resume_mode: If true, the script will resume from the last saved index.
-#
 # Usage:
 #   CollegeCrawler.new.run
 #
@@ -42,10 +39,9 @@ class CollegeCrawler
   COLLEGE_PAGE_BASE_URL = 'https://bigfuture.collegeboard.org/colleges'
   FILTER_PAGE_URL = 'https://bigfuture.collegeboard.org/college-search/filters'
 
-  def initialize(resume_mode: false)
+  def initialize
     @batch_size = 50
     @logger = LoggingConfig.setup
-    @resume_mode = resume_mode
   end
 
   def run
@@ -64,19 +60,8 @@ class CollegeCrawler
 
   private
 
-  def initial_index
-    # Resume mode picks up from the last existing index
-    last_index = [College.order(:id).count - 1, 0].max
-    @resume_mode ? last_index : 0
-  end
-
-  def subsequent_index
-    last_index = [College.order(:id).count - 1, 0].max
-    @resume_mode ? last_index + @batch_size : @batch_size
-  end
-
   def fetch_initial_colleges
-    from = initial_index
+    from = 0
     response = fetch_college_batch(from)
 
     total_hits = response['totalHits']
@@ -89,15 +74,12 @@ class CollegeCrawler
     puts "✨ Let's steal some data! 💸"
     puts "🥷 Colleges at #{FILTER_PAGE_URL} will be scraped..."
     puts "🔍 Total colleges found: #{total_hits}"
-    puts "🐢 Resuming from #{initial_index + 1}/#{total_hits}..." if @resume_mode
     puts '🌀 Processing...'
   end
 
   def display_progress_bar(total_hits)
-    current_count = @resume_mode ? College.count : 0
     ProgressBar.create(
       total: total_hits,
-      starting_at: current_count,
       format: '%a |%b%i| %p%% %t | %c/%C | %e',
       progress_mark: '█',
       remainder_mark: '░'
@@ -105,7 +87,7 @@ class CollegeCrawler
   end
 
   def fetch_and_process_remaining_colleges(total_hits, progress_bar)
-    from = subsequent_index
+    from = @batch_size
     while from < total_hits
       colleges = fetch_college_batch(from)['data']
       process_colleges(colleges, progress_bar)
