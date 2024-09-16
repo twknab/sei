@@ -67,6 +67,17 @@ task :scrape do
   CollegeCrawler.new.run
 end
 
+# Warning: use with caution. We have no guarantee that the data set has not
+# changed from the College Board server since the last run. If you are resuming
+# a recent failure, it's likely that the data has not changed in such short
+# duration. If the failure is older, you should restart the scrape from scratch.
+desc 'Resume a recent run of the college crawler'
+task :resume do
+  require_relative './exec/college_crawler'
+
+  CollegeCrawler.new(resume_mode: true).run
+end
+
 desc 'Run RSpec tests'
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/**/*_spec.rb'
