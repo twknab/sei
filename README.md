@@ -1,4 +1,4 @@
-# Strategic Education, Inc. Coding Assessment
+# SEI Assessment
 
 This project is a college crawler that scrapes the [College Board website](https://bigfuture.collegeboard.org/college-search/filters) for college data and stores it in a PostgreSQL database. Ruby is used to write the script, along with a handful of gems to assist with web scraping actions, database interactions, code quality, and more.
 
